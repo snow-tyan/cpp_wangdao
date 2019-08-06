@@ -1,0 +1,24 @@
+#ignore all
+*
+
+#add need directory
+!/day*
+!/day*/**/
+
+#add need file
+!*.cc
+!*.cpp
+!*.h
+!*.conf
+!*.xml
+!*.dat
+
+#add Makefile
+!Makefile
+
+#add README.md
+!README.md
+
+#add .gitignore
+!.gitignore
+

@@ -61,7 +61,7 @@ void RssReader::parseRss(const char *filename)
 			 << endl;
 
 		//过滤一下description和content
-		regex reg("<[^>]*>");
+		regex reg("<[^>]*>");//[^>]* 匹配除'>'开头之外的字符串
 
 		rssItem.description = regex_replace(rssItem.description, reg, "");
 		rssItem.content = regex_replace(rssItem.content, reg, "");
