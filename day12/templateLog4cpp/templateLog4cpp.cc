@@ -2,7 +2,7 @@
 #include <string>
 using std::string;
 using namespace myLogger;
-#if 0
+
 void test0()
 {
     mylogger *mylog = mylogger::getMylogger();
@@ -12,7 +12,7 @@ void test0()
     mylog->info(prefix("info msg").c_str());
     mylogger::destory();
 }
-
+#if 0
 void test1()
 {
     //把test0()中的操作封成宏，类似printf的操作执行打印。
@@ -25,18 +25,19 @@ void test1()
 }
 #endif
 
-template<typename... Args>
-string Prefix(Args... args)
-{
-    
-}
 void test2()
 {
-    //测试可变参数
-    int num = 10;
-    // mylogger::getMylogger()->info("num = %d",num);
-    mylogger::getMylogger()->info(Prefix("num = %d",num).c_str());
 
+    logWarn("warn msg");
+    logError("error msg");
+    logDebug("debug msg, %s","helloworld");
+    // printf("%d  %d\n",2,printf("%d\n",3));
+    logInfo("1 + 1 = %d",1+1);
+    char s1[]="helloworld";
+    logInfo("%s",s1);
+    printf("%s\n","goodbye");
+    logInfo("%s","goodbye");
+    logDestory;
 }
 
 int main()

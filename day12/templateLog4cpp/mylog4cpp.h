@@ -32,12 +32,26 @@ public:
             delete _pMylogger;
     }
 
-    void warn(const char *msg) { _myCategory.warn(msg); }
-    void error(const char *msg) { _myCategory.error(msg); }
-    void debug(const char *msg) { _myCategory.debug(msg); }
+    template <typename... Args>
+    void warn(Args... args)
+    {
+        _myCategory.warn(args...);
+    }
 
     template <typename... Args>
-    void info(Args... args) 
+    void error(Args... args)
+    {
+        _myCategory.error(args...);
+    }
+
+    template <typename... Args>
+    void debug(Args... args)
+    {
+        _myCategory.debug(args...);
+    }
+
+    template <typename... Args>
+    void info(Args... args)
     {
         _myCategory.info(args...);
     }
@@ -87,15 +101,12 @@ private:
 mylogger *mylogger::_pMylogger = nullptr; //静态成员，类外初始化
 
 //一些宏定义
-#define prefix(msg) string("[").append(__FILE__ ).append(": ")\
-                        .append(__FUNCTION__ ).append(", ")\
-                        .append(std::to_string(__LINE__))\
-                        .append("] ").append(msg)
+#define prefix(msg) string("[").append(__FILE__).append(": ").append(__FUNCTION__).append(", ").append(std::to_string(__LINE__)).append("] ").append(msg)
 
-#define logWarn(msg) mylogger::getMylogger()->warn(prefix(msg).c_str())
-#define logError(msg) mylogger::getMylogger()->error(prefix(msg).c_str())
-#define logDebug(msg) mylogger::getMylogger()->debug(prefix(msg).c_str())
-#define logInfo(msg) mylogger::getMylogger()->info(prefix(msg).c_str())
+#define logWarn(msg, ...) mylogger::getMylogger()->warn(prefix(msg).c_str(), ##__VA_ARGS__)
+#define logError(msg, ...) mylogger::getMylogger()->error(prefix(msg).c_str(), ##__VA_ARGS__)
+#define logDebug(msg, ...) mylogger::getMylogger()->debug(prefix(msg).c_str(), ##__VA_ARGS__)
+#define logInfo(msg, ...) mylogger::getMylogger()->info(prefix(msg).c_str(), ##__VA_ARGS__)
 #define logDestory mylogger::destory()
 
 } //end of namespace myLogger
