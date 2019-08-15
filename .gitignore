@@ -6,9 +6,12 @@
 !/day*/**/
 
 #add need file
+!*.c
 !*.cc
 !*.cpp
 !*.h
+!*.hh
+!*.hpp
 !*.conf
 !*.xml
 !*.dat
