@@ -7,6 +7,7 @@
 using std::cout;
 using std::endl;
 using namespace ThreadPool_BO;
+using namespace current_thread;
 
 class  Mytask
 {
@@ -19,8 +20,8 @@ public:
         while (cnt--)
         {
             // int num = ::rand() % 100;
-            cout << ">> sub thread " << pthread_self() << " put num = " << num++ << endl;
-            // ::sleep(1);
+            cout << ">> sub thread " << threadName << " put num = " << num++ << endl;
+            ::sleep(1);
         }
     }
 };

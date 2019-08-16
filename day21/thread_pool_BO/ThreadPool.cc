@@ -28,7 +28,8 @@ void ThreadPool::start()
     //创建线程对象
     for (size_t idx = 0; idx != _threadNum; ++idx)
     {
-        unique_ptr<Thread> thread(new Thread(std::bind(&ThreadPool::threadFunc,this)));
+        unique_ptr<Thread> thread(new Thread(
+            std::bind(&ThreadPool::threadFunc, this), std::to_string(idx + 1)));
         _threads.push_back(std::move(thread)); //push_back底层使用的复制，
                                                //智能指针不能复制
     }
