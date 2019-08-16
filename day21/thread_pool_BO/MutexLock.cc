@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <error.h>
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 MutexLock::MutexLock()
@@ -37,4 +37,4 @@ void MutexLock::unlock()
     }
 }
 
-} //end of namespace ThreadPool_OO
+} //end of namespace ThreadPool_BO

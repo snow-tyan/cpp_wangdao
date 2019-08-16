@@ -1,6 +1,6 @@
 #pragma once
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 class Noncopyable
@@ -13,4 +13,4 @@ public:
     Noncopyable operator=(const Noncopyable &) = delete;
 };
 
-} //end of namespace ThreadPool_OO
+} //end of namespace ThreadPool_BO

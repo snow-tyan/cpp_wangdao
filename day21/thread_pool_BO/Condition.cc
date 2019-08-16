@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <error.h>
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 Condition::Condition(MutexLock &mutex)
@@ -47,4 +47,4 @@ void Condition::notifyall()
     }
 }
 
-} //end of namespace ThreadPool_OO
+} //end of namespace ThreadPool_BO

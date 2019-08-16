@@ -3,7 +3,7 @@
 #include "Noncopyable.hh"
 #include <pthread.h>
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 //减小头文件的依赖关系，用前向声明
 class MutexLock;
@@ -24,4 +24,4 @@ private:
     MutexLock &_mutex;
 };
 
-} //end of namespace ThreadPool_OO
+} //end of namespace ThreadPool_BO

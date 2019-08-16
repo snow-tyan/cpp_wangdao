@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 ThreadPool::ThreadPool(size_t threadNum, size_t queSize)
@@ -89,4 +89,4 @@ ThreadPool::Task ThreadPool::getTask()
     return _taskque.pop();
 }
 
-} //end of namespace ThreadPool_OO
+} //end of namespace ThreadPool_BO

@@ -1,6 +1,6 @@
 #include "TaskQueue.hh"
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 TaskQueue::TaskQueue(size_t size)
@@ -62,4 +62,4 @@ void TaskQueue::wakeup()
     _notEmpty.notifyall();
 }
 
-}//end of namespace ThreadPool_OO
+}//end of namespace ThreadPool_BO

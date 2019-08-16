@@ -1,6 +1,6 @@
 #include "Thread.hh"
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 void *Thread::threadFunc(void *arg)
@@ -41,4 +41,4 @@ Thread::~Thread()
     std::cout<<"~Thread()"<<std::endl;
 }
 
-} //end of namespace thread_OO
+} //end of namespace ThreadPool_BO

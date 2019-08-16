@@ -4,7 +4,7 @@
 #include <functional>
 #include <iostream>
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 class Thread
@@ -33,4 +33,4 @@ private:
     threadCallBack _cb;//回调函数
 };
 
-}//end of namespace thread_OO
+}//end of namespace ThreadPool_BO

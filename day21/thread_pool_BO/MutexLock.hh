@@ -2,7 +2,7 @@
 #include "Noncopyable.hh"
 #include <pthread.h>
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 class MutexLock
@@ -36,4 +36,4 @@ private:
     MutexLock &_mutex;
 };
 
-} //end of namespace ThreadPool_OO
+} //end of namespace ThreadPool_BO

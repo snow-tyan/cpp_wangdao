@@ -6,7 +6,7 @@
 #include <iostream>
 using std::cout;
 using std::endl;
-using namespace ThreadPool_OO;
+using namespace ThreadPool_BO;
 
 class  Mytask
 {

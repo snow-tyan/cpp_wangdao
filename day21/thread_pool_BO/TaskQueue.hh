@@ -5,7 +5,7 @@
 #include <queue>
 using std::queue;
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 class TaskQueue
@@ -30,4 +30,4 @@ private:
     bool _wakeupFlag;
 };
 
-}//end of namespace ThreadPool_OO
+}//end of namespace ThreadPool_BO

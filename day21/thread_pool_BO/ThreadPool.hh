@@ -7,7 +7,7 @@
 using std::vector;
 using std::unique_ptr;
 
-namespace ThreadPool_OO
+namespace ThreadPool_BO
 {
 
 class ThreadPool
@@ -33,4 +33,4 @@ private:
     bool _isExit;
 };
 
-}//end of namespace ThreadPool_OO
+}//end of namespace ThreadPool_BO
