@@ -1,32 +1,29 @@
 #pragma once
 #include "Noncopyable.hh"
 #include <pthread.h>
-#include <functional>
 
-namespace thread_BO
+namespace ThreadPool_OO
 {
 
 class Thread
     : public Noncopyable
 {
 public:
-    using threadCallBack = std::function<void()>;
-    Thread(threadCallBack &&cb)//注册回调函数
-        : _pthid(0), _isRunning(false), _cb(std::move(cb)) {}
+    Thread():_pthid(0),_isRunning(false){}
 
     void start();
     void join();
 
-    ~Thread();
+    virtual ~Thread();//出现纯虚函数，析构函数也要设为virtual
 
 private:
+    virtual void run() = 0;//任务
     //消除成员函数默认带一个this指针的影响，设为static
     static void * threadFunc(void * arg);
 
 private:
     pthread_t _pthid;
     bool _isRunning;
-    threadCallBack _cb;//回调函数
 };
 
-}//end of namespace thread_OO
+}//end of namespace ThreadPool_OO

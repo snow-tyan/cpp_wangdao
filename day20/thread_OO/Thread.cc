@@ -8,7 +8,8 @@ void *Thread::threadFunc(void *arg)
     Thread *pArg = static_cast<Thread *>(arg); //强转
     if (pArg)
     {
-        //虚函数run()，需要指针调用
+        //run()方法调用，必须通过一个对象来完成
+        //pArg是线程对象的指针
         pArg->run(); //线程要执行的任务
     }
 
@@ -18,6 +19,7 @@ void *Thread::threadFunc(void *arg)
 void Thread::start()
 {
     pthread_create(&_pthid, nullptr, threadFunc, this);
+    //第四个参数把当前线程对象的地址传递给threadFunc
     _isRunning = true;
 }
 

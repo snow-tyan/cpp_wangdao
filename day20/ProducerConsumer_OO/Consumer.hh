@@ -1,3 +1,4 @@
+#pragma once
 #include "Thread.hh"
 
 namespace PC_OO

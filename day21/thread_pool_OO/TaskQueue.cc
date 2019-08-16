@@ -1,6 +1,7 @@
 #include "TaskQueue.hh"
+#include "Task.hh"
 
-namespace PC_OO
+namespace ThreadPool_OO
 {
 
 TaskQueue::TaskQueue(size_t size)
@@ -8,6 +9,7 @@ TaskQueue::TaskQueue(size_t size)
 ,_mutex()
 ,_notFull(_mutex)
 ,_notEmpty(_mutex)
+,_wakeupFlag(true)
 {}
 
 bool TaskQueue::empty() const
@@ -21,7 +23,7 @@ bool TaskQueue::full() const
 }
 
 //运行在生产者线程上
-void TaskQueue::push(int elem)
+void TaskQueue::push(ElemType elem)
 {
     MutexLockGuard autoLock(_mutex);
     while(full())//使用while，防止虚假唤醒
@@ -34,18 +36,31 @@ void TaskQueue::push(int elem)
 }
 
 //运行在消费者线程上
-int TaskQueue::pop()
+TaskQueue::ElemType TaskQueue::pop()
 {
     MutexLockGuard autoLock(_mutex);
-    while(empty())
+    while (_wakeupFlag && empty())
     {
         _notEmpty.wait();
     }
-    int elem = _que.front();
-    _que.pop();
-    
-    _notFull.notify();
-    return elem;
+    if (_wakeupFlag)
+    {
+        ElemType elem = _que.front();
+        _que.pop();
+
+        _notFull.notify();
+        return elem;
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 
-}//end of PC_OO
+void TaskQueue::wakeup()
+{
+    _wakeupFlag=false;
+    _notEmpty.notifyall();
+}
+
+}//end of namespace ThreadPool_OO

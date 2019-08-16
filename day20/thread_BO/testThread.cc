@@ -29,7 +29,8 @@ public:
 int main()
 {
     Task *task = new Task();
-    unique_ptr<Thread> thread(new Thread(std::bind(&Task::process, task)));//类的成员函数隐含一个this指针参数
+    unique_ptr<Thread> thread(new Thread(
+        std::bind(&Task::process, task))); //类的成员函数隐含一个this指针参数
     thread->start();
     thread->join();
     cout << "i am main thread" << endl;

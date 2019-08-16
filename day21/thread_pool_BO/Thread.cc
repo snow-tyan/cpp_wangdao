@@ -1,6 +1,6 @@
 #include "Thread.hh"
 
-namespace thread_BO
+namespace ThreadPool_OO
 {
 
 void *Thread::threadFunc(void *arg)
@@ -38,6 +38,7 @@ Thread::~Thread()
         //to join with the terminated thread.
         pthread_detach(_pthid);
     }
+    std::cout<<"~Thread()"<<std::endl;
 }
 
 } //end of namespace thread_OO

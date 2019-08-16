@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <functional>
 
-namespace thread_BO
+namespace PC_BO
 {
 
 class Thread
@@ -11,13 +11,13 @@ class Thread
 {
 public:
     using threadCallBack = std::function<void()>;
-    Thread(threadCallBack &&cb)//注册回调函数
+    Thread(threadCallBack &&cb)
         : _pthid(0), _isRunning(false), _cb(std::move(cb)) {}
 
     void start();
     void join();
 
-    ~Thread();
+    ~Thread();//出现纯虚函数，析构函数也要设为virtual
 
 private:
     //消除成员函数默认带一个this指针的影响，设为static
@@ -26,7 +26,7 @@ private:
 private:
     pthread_t _pthid;
     bool _isRunning;
-    threadCallBack _cb;//回调函数
+    threadCallBack _cb;
 };
 
-}//end of namespace thread_OO
+} //end of namespace PC_BO

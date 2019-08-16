@@ -2,7 +2,7 @@
 #include "Noncopyable.hh"
 #include <pthread.h>
 
-namespace PC_OO
+namespace PC_BO
 {
 
 class MutexLock
@@ -36,4 +36,4 @@ private:
     MutexLock &_mutex;
 };
 
-} //end of namespace PC_OO
+} //end of namespace PC_BO

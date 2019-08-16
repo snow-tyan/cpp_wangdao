@@ -1,6 +1,6 @@
 #include "Thread.hh"
 
-namespace thread_BO
+namespace PC_BO
 {
 
 void *Thread::threadFunc(void *arg)
@@ -8,7 +8,7 @@ void *Thread::threadFunc(void *arg)
     Thread *pArg = static_cast<Thread *>(arg); //强转
     if (pArg)
     {
-        pArg->_cb(); //回调函数的执行
+        pArg->_cb(); //线程要执行的任务
     }
 
     return nullptr;
@@ -40,4 +40,4 @@ Thread::~Thread()
     }
 }
 
-} //end of namespace thread_OO
+} //end of namespace PC_BO

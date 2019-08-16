@@ -1,6 +1,6 @@
 #include "Thread.hh"
 
-namespace thread_BO
+namespace ThreadPool_OO
 {
 
 void *Thread::threadFunc(void *arg)
@@ -8,7 +8,8 @@ void *Thread::threadFunc(void *arg)
     Thread *pArg = static_cast<Thread *>(arg); //强转
     if (pArg)
     {
-        pArg->_cb(); //回调函数的执行
+        //虚函数run()，需要指针调用
+        pArg->run(); //线程要执行的任务
     }
 
     return nullptr;
@@ -40,4 +41,4 @@ Thread::~Thread()
     }
 }
 
-} //end of namespace thread_OO
+} //end of namespace ThreadPool_OO

@@ -30,8 +30,9 @@ int main()
 {
     // myThread th1;
     // myThread th2(th1);//error
-    unique_ptr<Thread> thread(new myThread());
-    thread->start();
+    unique_ptr<Thread> thread(new myThread()); //基类的指针指向派生类对象
+                                               //会通过虚表找虚函数
+    thread->start();//产生子线程
     thread->join();
     cout << "i am main thread" << endl;
 

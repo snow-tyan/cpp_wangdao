@@ -2,8 +2,9 @@
 #include "Noncopyable.hh"
 #include <pthread.h>
 #include <functional>
+#include <iostream>
 
-namespace thread_BO
+namespace ThreadPool_OO
 {
 
 class Thread
@@ -12,7 +13,10 @@ class Thread
 public:
     using threadCallBack = std::function<void()>;
     Thread(threadCallBack &&cb)//注册回调函数
-        : _pthid(0), _isRunning(false), _cb(std::move(cb)) {}
+        : _pthid(0), _isRunning(false), _cb(std::move(cb))
+    {
+        std::cout<<"Thread(threadCallBack &&)"<<std::endl;
+    }
 
     void start();
     void join();
